@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Dog</title>
+<style>
+    th, td, a, td>a{
+    font-family: cursive;
+    text-align: center;
+    color: white;
+    font-family: cursive;
+}
+a:link, a:visited{
+    text-decoration: none;
+}
+table{
+    background-color: #aa814f;
+    padding: 5px 5px;
+    border-spacing: 5px;
+
+}
+
+h1{
+    text-align: center;
+    transition-property: font-weight;
+    transition-timing-function: ease;
+    font-family: "Lucida Bright";
+    color: brown;
+}
+td:hover{
+    font-weight:bold;
+    color:white;
+    transition-property: background-color;
+}
+
+footer {
+    text-align: center;
+    background-color: #aa814f;
+    color: white;
+    padding: 5px 5px;
+  
+}
+
+form {
+    font-family: cursive;
+    color: brown;
+    font-size: large;
+    font-weight: bold;
+    line-height: 2;
+    margin: auto;
+    width: 70%;
+    padding: 80px;
+    text-align: center;
+    background-image: url("images/dog-bone-frame.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    
+}
+
+input[type=submit]{
+    cursor:pointer;
+    background-color: #aa814f;
+    border-radius: 10px;
+    border:groove;
+    color: white;
+    font-weight: bold;
+    padding: 6px 10px;
+    margin: 5px 12px;
+    font-family: cursive;
+  }
+
+</style>
+</head>
+<body>
+<table style="width:100%">
+<tr class="heading">
+<td><a th:href="@{/}">Home</a></td>
+<td><a th:href="@{/addBreed}">Add Breed</a></td>
+<td><a th:href="@{/addDog}">Add Dogs</a></td>
+<td><a th:href="@{/showList}">Show List</a></td>
+<td><a th:href="@{/viewBreeds}">View Breeds</a></td>
+<td><a th:href="@{/viewDogs}">View Dogs</a></td>
+</tr>
+</table>
+<h1>Add Dogs</h1>
+<form action="#" th:action="@{/addDog}" method="post" th:object="${dogs}">
+Name <input type="text" th:field="*{name}"><br>
+Owner Name <input type="text" th:field="*{o_name}"><br>
+Breed <select th:field="*{breed}">
+<option th:each="b: ${breeds}" th:value="${b.name}" th:text="${b.name}">
+</select><br>
+Gender <input type="radio" th:field="*{gender}" value="male" id="male">
+<label for="male">Male</label>
+<input type="radio" th:field="*{gender}" value="female" id="female">
+<label for="female">Female</label><br>
+Class Of Speciality <input type="radio" th:field="*{speciality}" value="yes" id="yes">
+<lable for="yes">Yes</lable>
+<input type="radio" th:field="*{speciality}" value="no" id="no">
+<lable for="no">No</lable><br>
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
